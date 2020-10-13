@@ -1,6 +1,5 @@
 package com.conwaysgameoflife
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,30 +8,20 @@ import androidx.recyclerview.widget.RecyclerView
 /**
  * Created by aleksandar.kovachev.
  */
-class ConwayGameAdapter(private val x: Int, private val y: Int) :
+class ConwayGameAdapter(private val cells: List<Cell>) :
     RecyclerView.Adapter<ConwayGameAdapter.ViewHolder>() {
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var alive = false
-
-        fun die() {
-            alive = false
-            itemView.setBackgroundColor(Color.BLACK)
-        }
-
-        fun reborn() {
-            alive = true
-            itemView.setBackgroundColor(Color.WHITE)
-        }
-
-        fun bind() {
+        fun bind(cell: Cell) {
             itemView.setOnClickListener {
-                if (alive) {
-                    die()
+                if (cell.isAlive()) {
+                    cell.die()
                 } else {
-                    reborn()
+                    cell.reborn()
                 }
+                itemView.setBackgroundColor(cell.getBackground())
             }
+            itemView.setBackgroundColor(cell.getBackground())
         }
     }
 
@@ -42,11 +31,11 @@ class ConwayGameAdapter(private val x: Int, private val y: Int) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind()
+        holder.bind(cells[position])
     }
 
     override fun getItemCount(): Int {
-        return x * y
+        return cells.size
     }
 
 }

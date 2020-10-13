@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="X:"
         app:layout_constraintBottom_toBottomOf="@id/x_edit_text"
-        app:layout_constraintBottom_toTopOf="@id/recycler_view"
+        app:layout_constraintBottom_toTopOf="@id/recycler_scroll"
         app:layout_constraintEnd_toStartOf="@id/x_edit_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:digits="0123456789"
         android:inputType="numberSigned"
-        app:layout_constraintBottom_toTopOf="@id/recycler_view"
+        app:layout_constraintBottom_toTopOf="@id/recycler_scroll"
         app:layout_constraintEnd_toStartOf="@id/y_text"
         app:layout_constraintStart_toEndOf="@id/x_text"
         app:layout_constraintTop_toTopOf="parent" />
@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:text="Y:"
         app:layout_constraintBottom_toBottomOf="@id/y_edit_text"
-        app:layout_constraintBottom_toTopOf="@id/recycler_view"
+        app:layout_constraintBottom_toTopOf="@id/recycler_scroll"
         app:layout_constraintEnd_toStartOf="@id/y_edit_text"
         app:layout_constraintStart_toEndOf="@id/x_edit_text"
         app:layout_constraintTop_toTopOf="parent" />
@@ -46,7 +46,7 @@
         android:layout_height="wrap_content"
         android:digits="0123456789"
         android:inputType="numberSigned"
-        app:layout_constraintBottom_toTopOf="@id/recycler_view"
+        app:layout_constraintBottom_toTopOf="@id/recycler_scroll"
         app:layout_constraintEnd_toStartOf="@id/set"
         app:layout_constraintStart_toEndOf="@id/y_text"
         app:layout_constraintTop_toTopOf="parent" />
@@ -57,19 +57,26 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
         android:text="Set"
-        app:layout_constraintBottom_toTopOf="@id/recycler_view"
+        app:layout_constraintBottom_toTopOf="@id/recycler_scroll"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/y_edit_text"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <HorizontalScrollView
+        android:id="@+id/recycler_scroll"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/next_gen"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/x_edit_text" />
+        app:layout_constraintTop_toBottomOf="@id/x_edit_text">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </HorizontalScrollView>
 
     <Button
         android:id="@+id/next_gen"
